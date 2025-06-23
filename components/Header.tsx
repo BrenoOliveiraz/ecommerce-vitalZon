@@ -4,17 +4,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useUser } from '@clerk/nextjs'
 import { Search, Heart, ShoppingCart, User, HelpCircle } from 'lucide-react'
-// import { useBasketStore } from '@/app/(store)/store'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
   const { user } = useUser()
+  const [scrolled, setScrolled] = useState(false)
 
-  // const itemCount = useBasketStore((state) =>
-  //   state.items.reduce((total, item) => total + item.quantity, 0)
-  // )
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="relative bg-white py-4 px-4 min-h-[80px] w-full shadow-sm">
+    <header
+      className={`sticky top-0 z-50 bg-white w-full transition-all duration-300 ${
+        scrolled ? 'shadow-md py-2' : 'shadow-sm py-4'
+      }`}
+    >
+
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
 
         {/* Logo + Nome */}
