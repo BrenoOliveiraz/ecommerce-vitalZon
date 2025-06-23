@@ -20,7 +20,7 @@ export default function Header() {
         {/* Logo + Nome */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/logo.jpg"
+            src="/logo-Photoroom.png"
             alt="Logo"
             width={70}
             height={60}

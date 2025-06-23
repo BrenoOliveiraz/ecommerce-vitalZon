@@ -37,7 +37,7 @@ export default function RootLayout({
           </main>
 
           
-          {/* implementar quando chegar em casa <SanityLive /> */}
+           <SanityLive />
 
         </body>
       </html>
