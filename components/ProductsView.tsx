@@ -15,7 +15,7 @@ export default function ProductsView({ products }: ProductsViewProps) {
 
       {/* Seta grande no canto direito */}
       <Link
-        href="/products"
+        href="/allProducts"
         className="absolute top-1/2 right-0 translate-x-6 -translate-y-1/2 z-10 p-4 bg-black text-white rounded-full shadow-md hover:bg-gray-800 transition"
         aria-label="Ver todos os produtos"
       >

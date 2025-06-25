@@ -1,8 +1,11 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
+import Image from 'next/image';
+import { useRouter } from 'next/navigation'; // ✅ Importa o hook de navegação
 
 const Banner = ({ src, alt }) => {
+  const router = useRouter(); // ✅ Inicializa o router
+
   return (
     <div
       style={{
@@ -17,7 +20,6 @@ const Banner = ({ src, alt }) => {
         src={src}
         alt={alt}
         layout="fill"
-   
         objectPosition="center"
         quality={100}
         priority
@@ -79,9 +81,10 @@ const Banner = ({ src, alt }) => {
           e manter sua energia no topo.
         </h2>
 
-        {/* Botão separado */}
+        {/* Botão com onClick para /allProducts */}
         <div>
           <button
+            onClick={() => router.push('/allProducts')} // ✅ A navegação acontece aqui
             style={{
               padding: '0.9rem 2rem',
               backgroundColor: '#000',
@@ -103,7 +106,7 @@ const Banner = ({ src, alt }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
