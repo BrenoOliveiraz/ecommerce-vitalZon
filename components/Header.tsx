@@ -2,13 +2,16 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useUser } from '@clerk/nextjs'
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import { Search, Heart, ShoppingCart, User, HelpCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useBasketStore } from '@/app/(store)/store'
 
 export default function Header() {
   const { user } = useUser()
   const [scrolled, setScrolled] = useState(false)
+  const itemCount = useBasketStore((state) => state.items.reduce((total, item) => total + item.quantity, 0)
+  )
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -18,14 +21,13 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white w-full transition-all duration-300 ${
-        scrolled ? 'shadow-md py-2' : 'shadow-sm py-4'
-      }`}
+      className={`sticky top-0 z-50 bg-white w-full transition-all duration-300 ${scrolled ? 'shadow-md py-2' : 'shadow-sm py-4'
+        }`}
     >
 
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
 
-        {/* Logo + Nome */}
+
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/logo-Photoroom.png"
@@ -37,7 +39,7 @@ export default function Header() {
           <span className="text-[#4FC3CF] font-bold text-xl">VitalZon</span>
         </Link>
 
-        {/* Barra de busca */}
+
         <form action="/search" className="flex flex-1 max-w-xl bg-[#F6F6F6] rounded px-3 py-2 items-center shadow-sm">
           <input
             type="text"
@@ -48,39 +50,57 @@ export default function Header() {
           <Search className="w-5 h-8 text-gray-500" />
         </form>
 
-        {/* Ações à direita */}
+
         <div className="flex items-center gap-6 text-sm font-medium text-[#333333] whitespace-nowrap">
 
-          {/* Atendimento */}
+
           <Link href="/help" className="flex items-center gap-1 hover:opacity-75 transition">
             <HelpCircle className="w-5 h-5 text-[#4FC3CF]" />
             <span>Atendimento</span>
           </Link>
 
-          {/* Favoritos */}
+
           <Link href="/favorites" className="flex items-center gap-1 hover:opacity-75 transition">
             <Heart className="w-5 h-5 text-[#4FC3CF]" />
             <span>Favoritos</span>
           </Link>
 
-          {/* Minha conta */}
-          <Link href="/account" className="flex items-center gap-1 hover:opacity-75 transition">
-            <User className="w-5 h-5 text-[#4FC3CF]" />
-            <span>Minha conta</span>
-          </Link>
 
-          {/* Carrinho */}
+
           <Link href="/basket" className="relative flex items-center gap-1 hover:opacity-75 transition">
             <ShoppingCart className="w-5 h-5 text-[#4FC3CF]" />
-            <div className="text-xs font-bold bg-[#4FC3CF] text-white rounded-full w-5 h-5 flex items-center justify-center">
-              {/* {itemCount ?? 0} */}0
-            </div>
+            <span
+              className='
+              absolute -top-2 -right-2 bg-blue-300 text-white rounded-full w-5 h-5 items-center justify-center text-center text-xs'
+            >
+              {itemCount}
+            </span>
           </Link>
+
+
+
+          {user ? (
+
+            <Link href="/account" className="flex items-center gap-1 hover:opacity-75 transition">
+
+              <UserButton />
+            </Link>
+          ) : (
+            <SignInButton mode='modal'>
+              <div className="flex items-center gap-2 bg-[#4FC3CF] hover:bg-[#3BB1BD] text-white font-semibold py-2 px-4 rounded-md cursor-pointer shadow-sm transition-all">
+                <User className="w-4 h-4" />
+                <span>Entrar</span>
+              </div>
+            </SignInButton>
+
+          )
+          }
+
 
         </div>
       </div>
 
-      {/* Borda inferior com gradiente */}
+
       <div className="absolute bottom-0 left-0 w-full h-[4px] bg-gradient-to-r from-[#FFF9C4] via-[#4FC3CF] to-[#A1E5CF]
 
 
