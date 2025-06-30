@@ -6,6 +6,7 @@ import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import { Search, Heart, ShoppingCart, User, HelpCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useBasketStore } from '@/app/(store)/store'
+import Form from 'next/form'
 
 export default function Header() {
   const { user } = useUser()
@@ -40,7 +41,7 @@ export default function Header() {
         </Link>
 
 
-        <form action="/search" className="flex flex-1 max-w-xl bg-[#F6F6F6] rounded px-3 py-2 items-center shadow-sm">
+        <Form action="/search" className="flex flex-1 max-w-xl bg-[#F6F6F6] rounded px-3 py-2 items-center shadow-sm">
           <input
             type="text"
             name="query"
@@ -48,7 +49,7 @@ export default function Header() {
             className="flex-1 outline-none text-sm text-[#333333] placeholder:text-gray-500 bg-transparent"
           />
           <Search className="w-5 h-8 text-gray-500" />
-        </form>
+        </Form>
 
 
         <div className="flex items-center gap-6 text-sm font-medium text-[#333333] whitespace-nowrap">
