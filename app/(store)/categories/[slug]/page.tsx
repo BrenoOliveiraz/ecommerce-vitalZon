@@ -1,31 +1,35 @@
+import CategoriesSelectorComponent from '@/components/CategorySelector';
 import ProductsView from '@/components/ProductsView';
-
+import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getProductsByCategory } from '@/sanity/lib/products/getProductByCategory';
-import React from 'react'
+import React from 'react';
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+  const { slug } = await params;
 
   const products = await getProductsByCategory(slug);
- 
+  const categories = await getAllCategories();
 
-
+  const title =
+    slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ') + ' Collection';
 
   return (
-    <div className='flex flex-col items-center justify-top min-h-screen bg-gray-100 p-4'>
-      <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-4xl'>
-        <h1 className='text-3xl font-bold mb-6 text-center'>
-          {slug
-            .split("")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join("")} {""}
-          Collection
+    <div className="px-4 py-10 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
 
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-10">
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-left">
+          {title}
         </h1>
-        <ProductsView products={products}  />
+
+        <div className="w-full sm:w-72">
+          <CategoriesSelectorComponent categories={categories} />
+        </div>
       </div>
 
-
+      <ProductsView products={products} />
     </div>
-  )
+  );
 }
