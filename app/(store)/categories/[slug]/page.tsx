@@ -1,5 +1,5 @@
 import ProductsView from '@/components/ProductsView';
-import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
+
 import { getProductsByCategory } from '@/sanity/lib/products/getProductByCategory';
 import React from 'react'
 
@@ -7,7 +7,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const { slug } = await params
 
   const products = await getProductsByCategory(slug);
-  const categories = await getAllCategories();
+ 
 
 
 
@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           Collection
 
         </h1>
-        <ProductsView products={products} categories={categories} />
+        <ProductsView products={products}  />
       </div>
 
 

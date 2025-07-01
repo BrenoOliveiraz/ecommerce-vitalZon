@@ -1,4 +1,5 @@
-import ResellerCTA from "./Reseller";
+import Image from 'next/image';
+import ResellerCTA from './Reseller';
 
 export default function BrandPillars() {
   return (
@@ -9,11 +10,15 @@ export default function BrandPillars() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
 
-        <div className="relative overflow-hidden rounded-lg">
-          <img
+        {/* Pilar 1 */}
+        <div className="relative overflow-hidden rounded-lg h-[600px]">
+          <Image
             src="/pro-ciencia.jpg"
             alt="Ciência Aplicada"
-            className="w-full h-[600px] object-cover"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+            priority
           />
           <div className="absolute inset-0 flex flex-col justify-end items-start p-6 text-white text-left bg-gradient-to-t from-black/30 via-black/10 to-transparent">
             <h3 className="text-xl font-extrabold tracking-wide mb-2">CIÊNCIA APLICADA</h3>
@@ -23,11 +28,15 @@ export default function BrandPillars() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg">
-          <img
+        {/* Pilar 2 */}
+        <div className="relative overflow-hidden rounded-lg h-[600px]">
+          <Image
             src="/pro-pureza.jpg"
             alt="Ingredientes Seguros"
-            className="w-full h-[600px] object-cover"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+            priority
           />
           <div className="absolute inset-0 flex flex-col justify-end items-start p-6 text-white text-left bg-gradient-to-t from-black/30 via-black/10 to-transparent">
             <h3 className="text-xl font-extrabold tracking-wide mb-2">INGREDIENTES SEGUROS</h3>
@@ -37,11 +46,15 @@ export default function BrandPillars() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg">
-          <img
+        {/* Pilar 3 */}
+        <div className="relative overflow-hidden rounded-lg h-[600px]">
+          <Image
             src="/pro-planeta.jpg"
             alt="Impacto Consciente"
-            className="w-full h-[600px] object-cover"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-lg"
+            priority
           />
           <div className="absolute inset-0 flex flex-col justify-end items-start p-6 text-white text-left bg-gradient-to-t from-black/30 via-black/10 to-transparent">
             <h3 className="text-xl font-extrabold tracking-wide mb-2">IMPACTO CONSCIENTE</h3>

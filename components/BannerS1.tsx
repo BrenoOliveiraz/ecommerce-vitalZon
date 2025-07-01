@@ -1,10 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // ✅ Importa o hook de navegação
+import { useRouter } from 'next/navigation'; 
 
-const Banner = ({ src, alt }) => {
-  const router = useRouter(); // ✅ Inicializa o router
+
+interface BannerProps {
+  src: string;
+  alt: string;
+}
+
+const Banner = ({ src, alt }: BannerProps) => {
+  const router = useRouter(); 
 
   return (
     <div
@@ -25,7 +31,7 @@ const Banner = ({ src, alt }) => {
         priority
       />
 
-      {/* Bloco de conteúdo à esquerda */}
+
       <div
         style={{
           position: 'absolute',
@@ -39,7 +45,7 @@ const Banner = ({ src, alt }) => {
           maxWidth: '500px',
         }}
       >
-        {/* Badge */}
+      
         <div
           style={{
             padding: '0.4rem 1rem',
@@ -56,7 +62,7 @@ const Banner = ({ src, alt }) => {
           PROMOÇÕES LIMITADAS POR TEMPO
         </div>
 
-        {/* Texto secundário */}
+ 
         <div
           style={{
             fontSize: '0.9rem',
@@ -68,7 +74,7 @@ const Banner = ({ src, alt }) => {
           Já conhece os nossos produtos essenciais?
         </div>
 
-        {/* Título principal */}
+
         <h2
           style={{
             fontSize: '2rem',
@@ -81,10 +87,10 @@ const Banner = ({ src, alt }) => {
           e manter sua energia no topo.
         </h2>
 
-        {/* Botão com onClick para /allProducts */}
+
         <div>
           <button
-            onClick={() => router.push('/allProducts')} // ✅ A navegação acontece aqui
+            onClick={() => router.push('/allProducts')} 
             style={{
               padding: '0.9rem 2rem',
               backgroundColor: '#000',

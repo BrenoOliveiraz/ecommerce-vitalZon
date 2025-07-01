@@ -1,4 +1,4 @@
-import { Category, Product } from "@/sanity.types";
+import {  Product } from "@/sanity.types";
 import ProductGrid from "./ProductGrid";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -12,7 +12,7 @@ export default function ProductsView({ products }: ProductsViewProps) {
   return (
     <div className="relative flex flex-col">
    
-      <ProductGrid products={products.slice(0, 4)} />
+      <ProductGrid products={products.slice(0, 5)} />
 
     
       <Link
