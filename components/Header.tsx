@@ -7,6 +7,7 @@ import { Search, Heart, ShoppingCart, User, HelpCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useBasketStore } from '@/app/(store)/store'
 import Form from 'next/form'
+import { whatsappLink } from '@/lib/whatsLink';
 
 export default function Header() {
   const { user } = useUser()
@@ -55,7 +56,7 @@ export default function Header() {
         <div className="flex items-center gap-6 text-sm font-medium text-[#333333] whitespace-nowrap">
 
 
-          <Link href="/help" className="flex items-center gap-1 hover:opacity-75 transition">
+          <Link href={whatsappLink} className="flex items-center gap-1 hover:opacity-75 transition" target="_blank">
             <HelpCircle className="w-5 h-5 text-[#4FC3CF]" />
             <span>Atendimento</span>
           </Link>

@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import Header from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-
+          <WhatsAppButton />
           
            <SanityLive />
 
