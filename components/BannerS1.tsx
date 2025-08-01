@@ -35,7 +35,7 @@ const Banner = ({ src, alt }: BannerProps) => {
       <div
         style={{
           position: 'absolute',
-          top: '85%',
+          top: '84%',
           left: '8%',
           zIndex: 2,
           color: '#000',
