@@ -35,7 +35,7 @@ const Banner = ({ src, alt }: BannerProps) => {
       <div
         style={{
           position: 'absolute',
-          top: '20%',
+          top: '85%',
           left: '8%',
           zIndex: 2,
           color: '#000',
@@ -46,47 +46,6 @@ const Banner = ({ src, alt }: BannerProps) => {
         }}
       >
       
-        <div
-          style={{
-            padding: '0.4rem 1rem',
-            border: '1px solid #000',
-            borderRadius: '9999px',
-            fontSize: '0.8rem',
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            fontWeight: 500,
-            backgroundColor: 'rgba(255,255,255,0.6)',
-            width: 'fit-content',
-          }}
-        >
-          PROMOÇÕES LIMITADAS POR TEMPO
-        </div>
-
- 
-        <div
-          style={{
-            fontSize: '0.9rem',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            opacity: 0.8,
-          }}
-        >
-          Já conhece os nossos produtos essenciais?
-        </div>
-
-
-        <h2
-          style={{
-            fontSize: '2rem',
-            lineHeight: 1.3,
-            fontWeight: 700,
-          }}
-        >
-          Descubra combinações ideais <br />
-          para cuidar do seu bem-estar <br />
-          e manter sua energia no topo.
-        </h2>
-
 
         <div>
           <button

@@ -6,16 +6,17 @@ import ProductsView from "@/components/ProductsView";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 
 
+
+
+
+
 export default async function Home() {
   const products = await getAllProducts()
-
-
-
 
   return (
     <div>
 
-      <Banner src="/bs2.png" alt="Banner" />
+      <Banner src="/bannerm.jpeg" alt="Banner" />
       <div className="m-20">
 
         <h1 className="text-4xl font-bold mb-10 mt-24 text-center text-gray-900">
