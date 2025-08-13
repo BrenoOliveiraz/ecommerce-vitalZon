@@ -22,9 +22,10 @@ export default async function Home() {
           { src: "/bannerm.jpeg", alt: "Banner 1" },
           { src: "/banner2.jpeg", alt: "Banner 2" },
           { src: "/banner3.jpeg", alt: "Banner 3" },
-          { src: "/banner4.jpeg", alt: "Banner 3" },
-          { src: "/banner5.jpeg", alt: "Banner 3" },
-          { src: "/banner6.jpeg", alt: "Banner 3" },
+          { src: "/banner4.jpeg", alt: "Banner 4" },
+          { src: "/banner5.jpeg", alt: "Banner 5" },
+          { src: "/banner5melhorado.jpeg", alt: "banner5melhorado" },
+          { src: "/banner6.jpeg", alt: "Banner 6" },
         ]}
       />
       <div className="m-20">
