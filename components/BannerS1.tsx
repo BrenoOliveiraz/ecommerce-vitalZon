@@ -1,77 +1,62 @@
 'use client';
 
+import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
-
-interface BannerProps {
-  src: string;
-  alt: string;
+interface BannerCarouselProps {
+  images: { src: string; alt: string }[];
 }
 
-const Banner = ({ src, alt }: BannerProps) => {
-  const router = useRouter(); 
+const BannerCarousel = ({ images }: BannerCarouselProps) => {
+  const router = useRouter();
+  const timer = useRef<NodeJS.Timeout | null>(null);
+
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: 'snap',
+    slides: {
+      perView: 1,
+    },
+  });
+
+  useEffect(() => {
+    if (!slider) return;
+
+    timer.current = setInterval(() => {
+      slider.current?.next();
+    }, 4000); 
+
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, [slider]);
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100vw',
-        height: '85vh',
-        overflow: 'hidden',
-        background: 'linear-gradient(to bottom, #98FB98, #ADD8E6)',
-      }}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        layout="fill"
-        objectPosition="center"
-        quality={100}
-        priority
-      />
-
-
-      <div
-        style={{
-          position: 'absolute',
-          top: '84%',
-          left: '8%',
-          zIndex: 2,
-          color: '#000',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          maxWidth: '500px',
-        }}
-      >
-      
-
-        <div>
-          <button
-            onClick={() => router.push('/allProducts')} 
-            style={{
-              padding: '0.9rem 2rem',
-              backgroundColor: '#000',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '9999px',
-              fontSize: '1rem',
-              fontWeight: 500,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            COMPRE AGORA
-            <span style={{ fontSize: '1.2rem' }}>→</span>
-          </button>
+    <div ref={sliderRef} className="keen-slider w-screen h-[85vh] relative">
+      {images.map((image, index) => (
+        <div key={index} className="keen-slider__slide relative w-full h-full">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
+          />
+          <div className="absolute bottom-16 left-8 z-10 text-black flex flex-col gap-4 max-w-md">
+            <button
+              onClick={() => router.push('/allProducts')}
+              className="px-6 py-3 bg-black text-white rounded-full font-medium text-lg shadow-lg hover:bg-gray-800 transition"
+            >
+              COMPRE AGORA →
+            </button>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
 
-export default Banner;
+export default BannerCarousel;
