@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
-import { Search, Heart, ShoppingCart, User, HelpCircle } from 'lucide-react'
+import { Search,ShoppingCart, User, HelpCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useBasketStore } from '@/app/(store)/store'
 import Form from 'next/form'
@@ -62,10 +62,6 @@ export default function Header() {
           </Link>
 
 
-          <Link href="/favorites" className="flex items-center gap-1 hover:opacity-75 transition">
-            <Heart className="w-5 h-5 text-[#4FC3CF]" />
-            <span>Favoritos</span>
-          </Link>
 
 
 

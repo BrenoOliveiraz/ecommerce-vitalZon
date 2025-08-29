@@ -11,6 +11,7 @@ interface ProductsViewProps {
 export default function ProductsView({ products }: ProductsViewProps) {
   return (
     <div className="relative flex flex-col">
+      
    
       <ProductGrid products={products.slice(0, 5)} />
 

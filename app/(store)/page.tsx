@@ -36,6 +36,8 @@ export default async function Home() {
 
         <ProductsView products={products} />
       </div>
+
+      
       <BannerS2 />
       <div className="m-20">
 
