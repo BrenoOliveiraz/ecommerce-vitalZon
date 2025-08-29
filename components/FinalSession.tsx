@@ -3,7 +3,7 @@ import ResellerCTA from './Reseller';
 
 export default function BrandPillars() {
   return (
-    <section className="bg-white py-16 px-4 text-center">
+    <section className="bg-white py-16 px-4 text-center mt-20">
       <h2 className="text-2xl md:text-3xl font-bold mb-12">
         Nossos princípios essenciais
       </h2>
