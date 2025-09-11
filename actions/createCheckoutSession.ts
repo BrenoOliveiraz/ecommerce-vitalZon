@@ -47,8 +47,15 @@ export async function createCheckOutSession(
       metadata,
       mode: "payment",
       allow_promotion_codes: true,
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`
-      ,
+      payment_method_types: ["card"],
+      payment_method_options: {
+        card: {
+          installments: {
+            enabled: true, // 🔹 habilita parcelamento no cartão
+          },
+        },
+      },
+      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
       cancel_url: `${baseUrl}/basket`,
       line_items: items.map((item) => ({
         price_data: {

@@ -10,7 +10,6 @@ import { imageUrl } from '@/lib/imageUrl';
 import Loader from '@/components/Loader';
 import { createCheckOutSession, Metadata } from '@/actions/createCheckoutSession';
 
-
 export default function BasketPage() {
     const groupedItems = useBasketStore((state) => state.getGroupedItems());
     const { isSignedIn } = useAuth();
@@ -57,7 +56,6 @@ export default function BasketPage() {
         } finally {
             setIsLoading(false);
         }
-
     };
 
     return (
@@ -139,12 +137,8 @@ export default function BasketPage() {
                     )}
                 </div>
 
-                <div className="h-64 lg:h-0">
-                    {/* Spacer  */}
-                </div>
+                <div className="h-64 lg:h-0">{/* Spacer */}</div>
             </div>
         </div>
     );
 }
-
-
