@@ -51,7 +51,7 @@ export async function createCheckOutSession(
       payment_method_options: {
         card: {
           installments: {
-            enabled: true, // 🔹 habilita parcelamento no cartão
+            enabled: true, 
           },
         },
       },

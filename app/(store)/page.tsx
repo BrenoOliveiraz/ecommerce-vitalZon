@@ -1,6 +1,7 @@
 
 import BannerCarousel from "@/components/BannerS1";
 import BannerS2 from "@/components/BannerS2";
+import FastSelector from "@/components/FastSelector";
 import FinallSession from "@/components/FinalSession";
 import ProductsView from "@/components/ProductsView";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
@@ -28,7 +29,7 @@ export default async function Home() {
           { src: "/banner6MD.png", alt: "Banner 6" }, 
         ]}
       />
-
+      <FastSelector />
       <ProductsView products={products} />
       <BannerS2 />
       <FinallSession />

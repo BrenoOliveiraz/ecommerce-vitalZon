@@ -1,4 +1,4 @@
-// @/components/NutritionTable.tsx
+
 
 export default function NutritionTable() {
   return (
