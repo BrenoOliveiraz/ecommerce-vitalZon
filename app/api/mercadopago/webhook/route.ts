@@ -1,10 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import mercadopago from "mercadopago";
-import { backendClient } from "@/sanity/lib/backendClient";
 
-mercadopago.configure({
-  access_token: process.env.MP_ACCESS_TOKEN!,
-});
+import { NextRequest, NextResponse } from "next/server";
+import { payment } from "@/lib/mercadopago";
+import { backendClient } from "@/sanity/lib/backendClient";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,13 +12,11 @@ export async function POST(req: NextRequest) {
     if (body.type === "payment" || body.action?.startsWith("payment")) {
       const paymentId = body.data.id;
 
-      const payment = await mercadopago.payment.findById(paymentId);
-      const data = payment.body;
+      const data = await payment.get({ id: paymentId.toString() });
 
       console.log("Pagamento recebido:", data);
 
       if (data.status === "approved") {
-
         const order = await backendClient.create({
           _type: "order",
           orderNumber: crypto.randomUUID(),
@@ -32,7 +27,7 @@ export async function POST(req: NextRequest) {
           currency: data.currency_id,
           status: "paid",
           orderDate: new Date().toISOString(),
-          products: [], 
+          products: [],
         });
 
         console.log("Ordem criada no Sanity:", order);
