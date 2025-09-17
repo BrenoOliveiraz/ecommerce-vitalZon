@@ -8,7 +8,9 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { imageUrl } from '@/lib/imageUrl';
 import Loader from '@/components/Loader';
-import { createCheckOutSession, Metadata } from '@/actions/createCheckoutSession';
+import { createMercadoPagoCheckout } from '@/actions/createMercadoPagoCheckout';
+import { Metadata } from '@/actions/createCheckoutSession';
+
 
 export default function BasketPage() {
     const groupedItems = useBasketStore((state) => state.getGroupedItems());
@@ -46,10 +48,10 @@ export default function BasketPage() {
                 clerkUserId: user!.id,
             };
 
-            const checkoutUrl = await createCheckOutSession(groupedItems, metadata);
+            const checkoutUrl = await createMercadoPagoCheckout(groupedItems, metadata)
 
             if (checkoutUrl) {
-                window.location.href = checkoutUrl;
+                window.location.href = checkoutUrl; // Redireciona para o Mercado Pago
             }
         } catch (error) {
             console.error('Error creating checkout session', error);
