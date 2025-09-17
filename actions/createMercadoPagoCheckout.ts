@@ -26,7 +26,6 @@ export async function createMercadoPagoCheckout(
       throw new Error("Some items don't have a price")
     }
 
-    // Garante que a URL base está definida corretamente
     const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL
     if (!rawBaseUrl || !/^https?:\/\//.test(rawBaseUrl)) {
       throw new Error("NEXT_PUBLIC_BASE_URL precisa ser uma URL válida e pública")
@@ -41,7 +40,7 @@ export async function createMercadoPagoCheckout(
     const response = await preference.create({
       body: {
         items: items.map((item) => ({
-          id: item.product._id, // ← Adiciona o campo obrigatório
+          id: item.product._id, 
           title: item.product.name || 'Unnamed Product',
           description: `Product ID: ${item.product._id}`,
           picture_url: item.product.image

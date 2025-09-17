@@ -51,7 +51,7 @@ export default function BasketPage() {
             const checkoutUrl = await createMercadoPagoCheckout(groupedItems, metadata)
 
             if (checkoutUrl) {
-                window.location.href = checkoutUrl; // Redireciona para o Mercado Pago
+                window.location.href = checkoutUrl; 
             }
         } catch (error) {
             console.error('Error creating checkout session', error);

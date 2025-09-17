@@ -3,7 +3,7 @@ import mercadopago from "mercadopago";
 import { backendClient } from "@/sanity/lib/backendClient";
 
 mercadopago.configure({
-  access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN!,
+  access_token: process.env.MP_ACCESS_TOKEN!,
 });
 
 export async function POST(req: NextRequest) {
@@ -12,18 +12,16 @@ export async function POST(req: NextRequest) {
 
     console.log("Webhook Mercado Pago recebido:", body);
 
-    // Só tratamos se for evento de pagamento
     if (body.type === "payment" || body.action?.startsWith("payment")) {
       const paymentId = body.data.id;
 
-      // Buscar detalhes do pagamento
       const payment = await mercadopago.payment.findById(paymentId);
       const data = payment.body;
 
       console.log("Pagamento recebido:", data);
 
       if (data.status === "approved") {
-        // Aqui você cria a ordem no Sanity
+
         const order = await backendClient.create({
           _type: "order",
           orderNumber: crypto.randomUUID(),
@@ -34,7 +32,7 @@ export async function POST(req: NextRequest) {
           currency: data.currency_id,
           status: "paid",
           orderDate: new Date().toISOString(),
-          products: [], // aqui você pode puxar os produtos do carrinho salvo
+          products: [], 
         });
 
         console.log("Ordem criada no Sanity:", order);
