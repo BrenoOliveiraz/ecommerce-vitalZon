@@ -17,19 +17,13 @@ export default function ProductsView({ products }: ProductsViewProps) {
           Conheça os nossos produtos!
         </h1>
       </div>
-      <div className="relative flex flex-col">
+      <div className="relative flex flex-col items-center justify-between mb-8 max-w-6xl mx-auto">
 
 
         <ProductGrid products={products.slice(0, 5)} />
 
 
-        <Link
-          href="/allProducts"
-          className="absolute top-1/2 right-0 translate-x-6 -translate-y-1/2 z-10 p-4 bg-black text-white rounded-full shadow-md hover:bg-gray-800 transition"
-          aria-label="Ver todos os produtos"
-        >
-          <ArrowRight className="w-8 h-8" />
-        </Link>
+ 
       </div>
     </>
   );
