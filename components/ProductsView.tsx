@@ -1,7 +1,6 @@
 import { Product } from "@/sanity.types";
 import ProductGrid from "./ProductGrid";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+
 
 interface ProductsViewProps {
   products: Product[];
