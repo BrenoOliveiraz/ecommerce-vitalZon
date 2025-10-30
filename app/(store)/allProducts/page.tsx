@@ -4,6 +4,11 @@ import ProductGrid from "@/components/ProductGrid";
 import CategoriesSelectorComponent from "@/components/CategorySelector";
 import { Product } from "@/sanity.types";
 
+
+export const dynamic = "force-dynamic";
+export const revalidate = 60
+
+
 export default async function AllProductsPage() {
   const products: Product[] = await getAllProducts();
   const categories = await getAllCategories();

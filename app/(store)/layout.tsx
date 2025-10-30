@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations"; // 👈 importa o idioma
 import Header from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
 import Footer from "@/components/Footer";
@@ -28,20 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider dynamic>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+    <ClerkProvider localization={ptBR} dynamic> {/* 👈 define o idioma aqui */}
+      <html lang="pt-BR"> {/* 👈 muda o lang também */}
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <main>
             <Header />
             {children}
           </main>
           <Footer />
           <WhatsAppButton />
-          
-           <SanityLive />
-
+          <SanityLive />
         </body>
       </html>
     </ClerkProvider>
